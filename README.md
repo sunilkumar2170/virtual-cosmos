@@ -122,6 +122,6 @@ VITE_SERVER_URL=http://localhost:3001
  
 - Demo video showing m ovement, proximity chat connect/disconnect
   
- - demo video link:https://www.loom.com/share/840fbfc58c9d42a4a1f9463ecf4a0b21
+ - demo video link:https://www.loom.com/share/0c674a27bce242018f2712030025ebd0
 
   
