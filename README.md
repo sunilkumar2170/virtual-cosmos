@@ -21,7 +21,7 @@ A 2D virtual environment where users can move around and interact with each othe
 |-----------|-------------------------------|
 | Frontend  | React 18, Vite, PixiJS 7, Tailwind CSS |
 | Backend   | Node.js, Express, Socket.IO   |
-| Database  | MongoDB (optional, in-memory fallback) |
+| Database  | MongoDB , in-memory fallback) |
 | Realtime  | Socket.IO (WebSockets)        |
 
 ---
@@ -92,6 +92,10 @@ virtual-cosmos/
 └── server/                  # Node.js + Express + Socket.IO backend
     ├── src/
     │   └── index.js         # Main server: sockets, proximity, chat
+    ├── /models/
+    │   ├── User.js           # Stores user details (username, avatar, last seen)
+    │   ├── Session.js        # Tracks user session (join time, leave time, socket id)
+    │   ├── Message.js       #  Stores chat messages with timestamp and room info
     ├── .env
     └── package.json
 ```
@@ -104,7 +108,7 @@ virtual-cosmos/
 ```
 PORT=3001
 CLIENT_URL=http://localhost:5173
-# MONGODB_URI=mongodb://localhost:27017/virtual-cosmos  (optional)
+MONGODB_URI=mongodb://localhost:27017/virtual-cosmos
 ```
 
 ### Client (`client/.env`)
@@ -112,33 +116,12 @@ CLIENT_URL=http://localhost:5173
 VITE_SERVER_URL=http://localhost:3001
 ```
 
----
 
-## 🔧 How Proximity Works
 
-1. Every time a user moves, `user:move` is emitted to the server
-2. Server calculates distance between all user pairs:
-   ```
-   distance = √((x1-x2)² + (y1-y2)²)
-   ```
-3. If `distance < 150px` → users join a shared Socket.IO room → `proximity:connect` event fires → chat panel appears
-4. If `distance ≥ 150px` → users leave the room → `proximity:disconnect` → chat panel disappears
+ ##demo vidoe:
+ 
+- Demo video showing m ovement, proximity chat connect/disconnect
+  
+ - demo video link:https://www.loom.com/share/840fbfc58c9d42a4a1f9463ecf4a0b21
 
----
-
-## 🌐 Deployment
-
-To deploy online:
-1. Deploy server to **Railway / Render / Heroku**
-2. Set `VITE_SERVER_URL` in client `.env` to your deployed server URL
-3. Deploy client to **Vercel / Netlify**
-
----
-
-## 📋 Submission
-
-Submit here: https://forms.gle/GtkmYbjw4FVkrCzB7
-
-Include:
-- GitHub repo link with this README
-- Demo video (2–5 min) showing movement, proximity chat connect/disconnect
+  
